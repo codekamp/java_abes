@@ -31,6 +31,11 @@ public class Demo {
 
         System.out.println(student1.email);
 
+        student1.validate();
+        student2.validate();
+
+        student3.saveInDatabase();
+        student1.saveInDatabase();
     }
 
 

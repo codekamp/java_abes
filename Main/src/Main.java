@@ -11,20 +11,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        this.items[size] = o;
-        size++;
-
-
-        return this.size;
-
-        if(this.size <= 0) {
-            reutrn true;
-        } else {
-            return false;
-        }
-
-        return (this.size <= 0);
-
         ArrayList students = new ArrayList();
 
         System.out.println(students.isEmpty());

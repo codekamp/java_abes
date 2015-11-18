@@ -16,4 +16,8 @@ public class Dog extends Animal {
         super("Gumnam Kutta", 100);
         this.breed = breed;
     }
+
+    public void talk() {
+        System.out.println("wuff wuff");
+    }
 }

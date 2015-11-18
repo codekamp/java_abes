@@ -24,4 +24,8 @@ public class Animal {
     public void walk() {
         System.out.println("Tak Tak Tak Tak");
     }
+
+    public void talk() {
+        System.out.println("Hello guys!");
+    }
 }

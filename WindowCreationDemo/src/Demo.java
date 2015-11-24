@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 /**
  * Created by cerebro on 23/11/15.
@@ -15,7 +16,14 @@ public class Demo {
 
         Stage2Screen mainPanel = new Stage2Screen();
         mainPanel.setPreferredSize(new Dimension(800, 450));
+        mainPanel.setFocusable(true);
+        mainPanel.requestFocus();
+
+        mainPanel.addKeyListener(mainPanel);
+        mainPanel.addMouseListener(mainPanel);
+
         jframe1.add(mainPanel);
+        jframe1.setResizable(false);
         jframe1.pack();
 
 //        JButton button1 = new JButton("Click Me!");
@@ -40,31 +48,49 @@ public class Demo {
         BufferedImage image5 = Stage2Screen.loadImage("run_anim5.png");
         BufferedImage playerImages[] = {image1, image2, image3, image4, image5, image4, image3, image2};
         int counter = 0;
+        Random generator = new Random();
+
         while(true) {
 
-            counter++;
+            if(!mainPanel.isPaused) {
 
-            counter = counter % 8;
+                counter++;
 
-            mainPanel.playerImage = playerImages[counter];
+                counter = counter % 8;
 
-            if(mainPanel.ballX == 0) {
-                velocityX = 5;
+                mainPanel.playerImage = playerImages[counter];
+
+                mainPanel.playerVelocityY += mainPanel.playerAccY;
+                mainPanel.playerY += mainPanel.playerVelocityY;
+
+                if (mainPanel.playerY >= 450 - 45 - 90) {
+                    mainPanel.playerY = 450 - 45 - 90;
+                    mainPanel.playerVelocityY = 0;
+                    mainPanel.playerAccY = 0;
+                }
+
+                if (mainPanel.cloud1X <= -100) {
+                    mainPanel.cloud1Y = generator.nextInt(190) + 10;
+                    mainPanel.cloud1X = 900;
+                    mainPanel.cloud1Visible = true;
+                }
+
+                if (mainPanel.cloud2X <= -100) {
+                    mainPanel.cloud2Y = generator.nextInt(190) + 10;
+                    mainPanel.cloud2X = 900;
+                }
+
+                mainPanel.cloud1X -= 2;
+                mainPanel.cloud2X -= 2;
+
+                Rectangle playerRectangle = new Rectangle(100, mainPanel.playerY, 72, 90);
+                Rectangle cloud1Rectangle = new Rectangle(mainPanel.cloud1X, mainPanel.cloud1Y, 128, 71);
+
+                if(playerRectangle.intersects(cloud1Rectangle)) {
+                    mainPanel.cloud1Visible = false;
+                }
+
             }
-            if(mainPanel.ballX == 750) {
-                velocityX = -5;
-            }
-            if(mainPanel.ballY == 0) {
-                velocityY = 5;
-            }
-            if(mainPanel.ballY == 750) {
-                velocityY = -5;
-            }
-
-            mainPanel.ballX += velocityX;
-            mainPanel.ballY += velocityY;
-
-
             mainPanel.repaint();
 
             try {

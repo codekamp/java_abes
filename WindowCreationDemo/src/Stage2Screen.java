@@ -59,6 +59,7 @@ public class Stage2Screen extends JPanel implements KeyListener, MouseListener {
         return img;
     }
 
+
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -69,8 +70,6 @@ public class Stage2Screen extends JPanel implements KeyListener, MouseListener {
         if(e.getKeyCode() == KeyEvent.VK_SPACE && this.playerY == 450 - 45 -90) {
             this.playerVelocityY = -20;
             this.playerAccY = 1;
-        } else {
-            System.out.println("some other key pressed");
         }
     }
 

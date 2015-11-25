@@ -20,6 +20,8 @@ public class Demo {
         mainPanel.requestFocus();
 
         mainPanel.addKeyListener(mainPanel);
+
+
         mainPanel.addMouseListener(mainPanel);
 
         jframe1.add(mainPanel);

@@ -9,6 +9,7 @@ public class Demo {
             Demo.sendSms("Your OTP is 9876", 5);
         } catch (LowBalanceException e) {
             System.out.println("we are sending email to admin for recharging.");
+
         } catch (MobileOutOfReachException e) {
             System.out.println("We are showing message in our app, asking user to come out in open");
         } catch (Exception e) {

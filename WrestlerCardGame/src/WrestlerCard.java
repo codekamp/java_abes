@@ -8,5 +8,16 @@ public class WrestlerCard {
     private JLabel nameLabel;
     private JLabel weightLabel;
     private JLabel heightLabel;
-    public JPanel imagePanel;
+
+    public void setWrestler(Wrestler wrestler) {
+        this.nameLabel.setText(wrestler.name);
+        this.weightLabel.setText(Float.toString(wrestler.weight));
+        this.heightLabel.setText(Integer.toString(wrestler.height));
+    }
+
+    public void reset() {
+        this.nameLabel.setText("****");
+        this.weightLabel.setText("****");
+        this.heightLabel.setText("****");
+    }
 }
